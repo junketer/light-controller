@@ -24,9 +24,19 @@ public class MainTestCase {
 
 	@Test
 	public void testSequence() {
-		int RC = Main.run(new String[] {"Sequence"} );
-		assertEquals(Main.RC_OK, RC);
+		Main.runOnce("Sequence");
 		
 	}
 	
+	@Test
+	public void testColour() {
+		Main.runOnce("Colour");
+		
+	}
+	
+	@Test
+	public void testAlternate() {
+		Main.runOnce("Alternate");
+		
+	}
 }

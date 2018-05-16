@@ -12,7 +12,7 @@ public class Main {
 	 * The main method to be called to run the program
 	 * 
 	 * 
-	 * @param args
+	 * @param args - one arg, the name of the algorithm to run
 	 */
 	public static void main(String[] args) {
 		/*
@@ -26,6 +26,11 @@ public class Main {
 		System.exit(run(args));
 	}
 
+	/**
+	 * Run the algoritm and loop until terminated
+	 * @param args - input arguments
+	 * @return int = the retuurn code
+	 */
 	public static int run(String[] args) {
 		int RC = RC_OK;
 		try {
@@ -35,16 +40,29 @@ public class Main {
 				RC = RC_INVALID_INPUT;
 			} else {
 
-				LightAlgorithmType type = LightAlgorithmType.valueOf(args[0]);
-				AlgorithmFactory.getAlgorithm(type).run();
+				while (true) {
+					runOnce(args[0]);
+				}
 			}
 		} catch (Error e) {
+			e.printStackTrace();
 			RC = RC_UNKNOWN;
 		} catch (Exception e) {
+			e.printStackTrace();
 			RC = RC_UNKNOWN;
 		}
 
 		return RC;
+	}
+	
+	/**
+	 * run method to be called from unit tests so they don't loop and won't exit the VM
+	 * @param algorithmName - java.lang.String name of the algorithm to run
+	 */
+	static void runOnce(String algorithmName) {
+		LightAlgorithmType type = LightAlgorithmType.valueOf(algorithmName);
+		AlgorithmFactory.getAlgorithm(type).run();
+		
 	}
 
 	private static void echo(String printInput) {

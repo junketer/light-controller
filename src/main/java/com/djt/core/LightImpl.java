@@ -1,5 +1,13 @@
 package com.djt.core;
 
+import java.io.PrintStream;
+import java.time.LocalDateTime;
+
+/**
+ * Implementatino of the light interface
+ * @author DTillin
+ *
+ */
 public class LightImpl implements Light {
 
 	private static final String TO_STRING_PATTERN ="Light %s %s %s";
@@ -46,4 +54,24 @@ public class LightImpl implements Light {
 		return String.format(TO_STRING_PATTERN, String.valueOf(index+1), colour.toString(), state.toString().toLowerCase());
 	}
 
+	public Colour colour() {
+		return colour;
+	}
+
+	@Override
+	public void lightFor(long interval) {
+		toggle();
+		reportTo(System.out);
+		try {
+			Thread.sleep(interval);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		toggle();
+		reportTo(System.out);
+	}
+	
+	private void reportTo(PrintStream ps) {
+		ps.println(LocalDateTime.now() +  " " + toString());
+	}
 }
