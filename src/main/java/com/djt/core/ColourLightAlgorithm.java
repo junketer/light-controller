@@ -15,9 +15,7 @@ import java.util.concurrent.Future;
  */
 public class ColourLightAlgorithm implements LightAlgorithm {
 
-	/**
-	 * Run the algorithm
-	 */
+	@Override
 	public void run() {
 	
 		// get the lights

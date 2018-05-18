@@ -1,5 +1,10 @@
 package com.djt.core;
 
+/**
+ * The main class to start the program
+ * @author DTillin
+ *
+ */
 public class Main {
 
 	static final int RC_OK = 0;
@@ -65,11 +70,20 @@ public class Main {
 		
 	}
 
+	/**
+	 * Echo out to to Sys.out
+	 * @param printInput - java.lang.String to echo
+	 */
 	private static void echo(String printInput) {
 
 		System.out.println(printInput);
 	}
-
+	
+	/**
+	 * Build the output to report issues to the console if the input is incorrect
+	 * @param string
+	 * @return java.lang.String
+	 */
 	private static String printInput(String string) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(string);
